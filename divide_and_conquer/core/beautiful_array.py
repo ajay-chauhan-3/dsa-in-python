@@ -1,21 +1,19 @@
-'''
-link : https://leetcode.com/problems/beautiful-array/?envType=problem-list-v2&envId=dsa-sorting-plateau-divide-and-conquer
+"""
+Link: https://leetcode.com/problems/beautiful-array/
 
-time complexity : O(nlogn)
+Time Complexity: O(n log n) # logn levels and each level doing linear work O(n)
+Space Complexity: O(n)  # recursion depth: O(log n), array slicing/creation: O(n)
 
----------------------------
+Concept:
+- Recursively split alternate elements (arr[::2] and arr[1::2]) to keep doubling the gap between consecutive numbers
+- Increasing the gap at every level ensures no two outer elements can average out to an element between them (A[i] + A[j] != 2 * A[k])
+- Combine left and right halves once divided down to single or double elements
 
-recursion depth = logn
-array copy / creation and slice : O(n)
-space complexity : O(n)
-
-concept : increase gap between the consecutive numbers
-
-    [1,2,3,4,5,6,7,8] - original array
-  [1,3,5,7]   [2,4,6,8] - divide
- [1,5] [3,7] [2,6] [4,8] - divide and combine
-
-'''
+Dry Run:
+       [1, 2, 3, 4, 5, 6, 7, 8]    <- gap = 1
+      [1, 3, 5, 7]   [2, 4, 6, 8]  <- gap = 2
+     [1, 5]  [3, 7] [2, 6]  [4, 8] <- gap = 4
+"""
 
 def beautifulArray(n):
 

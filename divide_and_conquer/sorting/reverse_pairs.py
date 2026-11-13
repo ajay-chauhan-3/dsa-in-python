@@ -1,9 +1,9 @@
 
 '''
-link : https://leetcode.com/problems/reverse-pairs/?envType=problem-list-v2&envId=dsa-sorting-plateau-divide-and-conquer
+Link : https://leetcode.com/problems/reverse-pairs/
 
-time complexity : O(nlogn)
-space complexity: O(n)  # array slicing /while loops and recusrion stack - logn
+Time Complexity : O(nlogn) # logn levels and each level doing linear work O(n)
+Space Complexity: O(n)  # array slicing /while loops - O(n) and recusrion stack - logn
 
 concept:
 - divide array till one element
