@@ -15,7 +15,7 @@ Concept:
 - Total Sum = (sum of all digits) * 2^(n - 1).
 """
 
-def subsequenceSum(self):
+def subsequenceSum(s):
     mod = 10**9 + 7
     n = len(s)
 
