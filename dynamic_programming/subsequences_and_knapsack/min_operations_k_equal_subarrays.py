@@ -1,6 +1,9 @@
 """
 Link: https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/
 
+Dependency Note:
+- Uses sortedcontainers (pip install sortedcontainers) to simulate a balanced BST / multiset in Python for O(log k) insertions, deletions, and binary search.
+
 Time Complexity: O(n log x + n * k)
 - Sliding window median cost: n iterations, each SortedList add/remove/pop takes O(log x) -> O(n log x).
 - DP (both Bottom-Up & Top-Down): (n - x + 1) * k states, O(1) transition per state -> O(n * k).

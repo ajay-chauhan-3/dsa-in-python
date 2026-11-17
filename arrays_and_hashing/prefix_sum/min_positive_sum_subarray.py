@@ -2,7 +2,7 @@
 Link: https://leetcode.com/problems/minimum-positive-sum-subarray/
 
 Dependency Note:
-- Uses `sortedcontainers` (pip install sortedcontainers) to simulate a balanced BST / multiset in Python for O(log k) insertions, deletions, and binary search.
+- Uses sortedcontainers (pip install sortedcontainers) to simulate a balanced BST / multiset in Python for O(log k) insertions, deletions, and binary search.
 
 Time Complexity: O(n log(r - l + 1))  # loop runs (n - l + 1) times; SortedList holds at most (r - l + 1) elements, so add, remove, and bisect_left each take O(log(r - l + 1)) time
 Space Complexity: O(n)                # O(n) for the prefix sum array 'ps', plus O(r - l + 1) for the SortedList window
