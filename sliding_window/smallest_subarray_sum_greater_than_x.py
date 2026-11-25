@@ -25,7 +25,6 @@ def smallestSubWithSum(arr, x):
             res = min(res, j - i + 1)
             total -= arr[i]
             i += 1
-
         j += 1
 
     return res if res != n + 1 else 0
