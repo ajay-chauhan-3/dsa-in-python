@@ -32,7 +32,6 @@ LEARNING NOTES: ROLLING HASH IN SIMPLE WORDS
     - Step 1 (Add right number 9): h = 452 * 10 + 9 = 4529 (4 is now at 10^3).
     - Step 2 (Remove left number 4): h = 4529 - 4 * (10^3) = 529 -> Exact hash of [5, 2, 9] in O(1)!
 
-
 3. WHY SAVE POWERS IN AN ARRAY (pow1, pow2)?
 --------------------------------------------------------------------------------
 - Every window slide needs base^mid % mod to remove the left number.
@@ -51,14 +50,18 @@ B. Why Prime Base (100003 instead of 100000):
    - Composite 100000 has small factors (2, 5, 10...) that mix with patterns in input numbers and create repeating remainder cycles.
    - Prime 100003 has no small factors, spreading remainders evenly.
 
-C. Why Double Hash (Probability Math):
+C. Why Double Hash (Birthday Paradox & Probability Math):
+   - Think of mod as a dice with M sides (remainders 0 to M - 1):
+     - Chance of 2 random subarrays getting the exact same remainder = 1 / M.
+   - Why 10^5 subarrays create huge clash chances (Birthday Paradox):
+     - Every subarray is checked against all other subarrays in the map.
+     - For k = 10^5 subarrays, total pairs compared = k * (k - 1) / 2 ≈ (10^5)^2 / 2 = 5 * 10^9 pairs.
    - Single Hash (mod1 ≈ 10^9):
-     - Chance of 2 random subarrays clashing = 1 / 10^9.
-     - Across k = 10^5 subarrays, total pairs ≈ k^2 / 2 ≈ 5 * 10^9.
-     - Expected clashes = (5 * 10^9) * (1 / 10^9) = 5 clashes (high risk of Wrong Answer!).
+     - Clash chance per pair = 1 / 10^9.
+     - Expected clashes in 1 test case = (5 * 10^9 pairs) * (1 / 10^9) = 5 clashes -> High risk of Wrong Answer!
    - Double Hash (mod1 * mod2 ≈ 10^18):
-     - Both h1 AND h2 must clash at the exact same time.
-     - Chance of 2 subarrays clashing = (1 / 10^9) * (1 / 10^9) = 1 / 10^18.
-     - Expected clashes across 5 * 10^9 pairs = (5 * 10^9) / 10^18 = 5 * 10^-9 ≈ 0 (virtually impossible).
+     - Both h1 AND h2 must match by luck at the exact same time.
+     - Clash chance per pair = (1 / 10^9) * (1 / 10^9) = 1 / 10^18.
+     - Expected clashes in 1 test case = (5 * 10^9 pairs) * (1 / 10^18) = 5 / 10^9 ≈ 0 (1 clash in ~200 million runs).
 ================================================================================
 """
